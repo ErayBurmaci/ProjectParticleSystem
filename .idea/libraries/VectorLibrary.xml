@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VectorLibrary">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../VectorLibrary/out/artifacts/VectorLibrary_jar/VectorLibrary.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
