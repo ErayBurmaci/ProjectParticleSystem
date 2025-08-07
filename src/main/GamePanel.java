@@ -3,11 +3,12 @@ package main;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import main.vector.Vector;
 
@@ -16,27 +17,47 @@ public class GamePanel extends JPanel {
     private ParticleSystem particleSystem;
     private Timer timer;
 
-    public GamePanel() {
-        setPreferredSize(new Dimension(800, 600));
-        setBackground(Color.BLACK);
+    public GamePanel(ParticleSettings settings) {
+        setPreferredSize(new Dimension(settings.getWidth(), settings.getHeight()));
+        setBackground(settings.getBackgroundColor());
 
         particleSystem = new ParticleSystem();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < settings.getParticleCount(); i++) {
             Shape shape;
-            if (Math.random() < 0.5) {
-                shape = new Circle();
-            } else {
-                shape = new Square();
+            switch (settings.getShapeType().toLowerCase()) {
+                case "circle":
+                    shape = new Circle();
+                    break;
+                case "square":
+                    shape = new Square();
+                    break;
+                case "random":
+                default:
+                    if (Math.random() < settings.getCircleProbability()) {
+                        shape = new Circle();
+                    } else {
+                        shape = new Square();
+                    }
+                    break;
             }
+            List<Color> colors = settings.getParticleColors();
+            Color particleColor = colors.get((int) (Math.random() * colors.size()));
 
             particleSystem.addParticle(
                     new Particle(
-                            new Vector(400, 300),
-                            new Vector(Math.random() * 4 - 2, Math.random() * 4 - 2),
-                            new Vector(0, 0),
-                            255,
-                            shape
+                            new Vector(settings.getStartX(), settings.getStartY()),
+                            new Vector(
+                                    Math.random() * (settings.getVelocityMax() - settings.getVelocityMin()) +
+                                    settings.getVelocityMin(),
+                                    Math.random() * (settings.getVelocityMax() - settings.getVelocityMin()) +
+                                    settings.getVelocityMin()
+                            ),
+                            new Vector(settings.getAccelerationX(), settings.getAccelerationY()),
+                            settings.getLifespan(),
+                            shape,
+                            settings.getParticleSize(),
+                            particleColor
                     )
             );
         }
