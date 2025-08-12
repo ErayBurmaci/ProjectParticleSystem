@@ -34,5 +34,7 @@ public interface ParticleSettings {
     int getWidth();
 
     List<Color> getParticleColors();
+
+    double getWeight();
 }
 

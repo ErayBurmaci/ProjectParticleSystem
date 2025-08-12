@@ -1,6 +1,5 @@
 package main;
 
-import lombok.Getter;
 import main.vector.Vector;
 
 import java.awt.Color;
@@ -12,14 +11,16 @@ public class Particle {
     private Vector position;
     private Vector velocity;
     private Vector acceleration;
-    private Vector weight;
+    private double weight;
     private double lifespan;
     private Shape shape;
     private int size;
     private Color color;
+    private static final double GravityX = 0.0;
+    private static final double GravityY = 0.0;
 
     public Particle(Vector position, Vector velocity, Vector acceleration, double lifespan, Shape shape, int size,
-            Color color) {
+            Color color, double weight) {
         this.position = position;
         this.velocity = velocity;
         this.acceleration = acceleration;
@@ -27,12 +28,15 @@ public class Particle {
         this.shape = shape;
         this.size = size;
         this.color = color;
+        this.weight = weight;
     }
-    
+
     public void update() {
+        acceleration.add(new Vector(GravityX, weight));
         velocity.add(acceleration);
         position.add(velocity);
         lifespan -= 1;
+        acceleration = new Vector(GravityX, GravityY);
     }
 
     public void render(Graphics g) {
