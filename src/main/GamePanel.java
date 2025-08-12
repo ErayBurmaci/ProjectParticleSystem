@@ -57,7 +57,8 @@ public class GamePanel extends JPanel {
                             settings.getLifespan(),
                             shape,
                             settings.getParticleSize(),
-                            particleColor
+                            particleColor,
+                            settings.getWeight()
                     )
             );
         }
