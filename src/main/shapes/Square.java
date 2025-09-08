@@ -1,11 +1,11 @@
-package main;
+package main.shapes;
 
 import java.awt.Graphics;
 
-public class Circle extends Shape {
+public class Square extends Shape {
 
     @Override
     public void draw(Graphics g, int size) {
-        g.drawOval(0, 0, size, size);
+        g.drawRect(0, 0, size, size);
     }
 }

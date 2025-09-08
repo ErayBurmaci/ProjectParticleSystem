@@ -1,11 +1,15 @@
-package main;
+package main.gui;
 
 import javax.swing.JFrame;
+
+import main.core.GamePanel;
+import main.presets.Confetti;
+import main.presets.ParticleSettings;
 
 public class Main {
 
     public static void main(String[] args) {
-        ParticleSettings settings = new Volcano();
+        ParticleSettings settings = new Confetti();
         GamePanel panel = new GamePanel(settings);
 
 

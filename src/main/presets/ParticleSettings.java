@@ -1,4 +1,4 @@
-package main;
+package main.presets;
 
 import java.awt.Color;
 import java.util.List;

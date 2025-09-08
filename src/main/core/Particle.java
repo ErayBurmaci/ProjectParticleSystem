@@ -1,5 +1,6 @@
-package main;
+package main.core;
 
+import main.shapes.Shape;
 import main.vector.Vector;
 
 import java.awt.Color;
@@ -16,8 +17,8 @@ public class Particle {
     private Shape shape;
     private int size;
     private Color color;
-    private static final double GravityX = 0.0;
-    private static final double GravityY = 0.0;
+    private static final double gravityX = 0.0;
+    private static final double gravityY = 0.0;
 
     public Particle(Vector position, Vector velocity, Vector acceleration, double lifespan, Shape shape, int size,
             Color color, double weight) {
@@ -32,11 +33,11 @@ public class Particle {
     }
 
     public void update() {
-        acceleration.add(new Vector(GravityX, weight));
+        acceleration.add(new Vector(gravityX, weight));
         velocity.add(acceleration);
         position.add(velocity);
         lifespan -= 1;
-        acceleration = new Vector(GravityX, GravityY);
+        acceleration = new Vector(gravityX, gravityY);
     }
 
     public void render(Graphics g) {

@@ -1,4 +1,4 @@
-package main;
+package main.shapes;
 
 import java.awt.Graphics;
 

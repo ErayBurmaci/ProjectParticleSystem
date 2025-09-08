@@ -1,4 +1,4 @@
-package main;
+package main.core;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import main.shapes.Circle;
+import main.presets.ParticleSettings;
+import main.shapes.Shape;
+import main.shapes.Square;
 import main.vector.Vector;
 
 public class GamePanel extends JPanel {

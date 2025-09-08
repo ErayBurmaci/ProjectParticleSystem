@@ -1,8 +1,7 @@
-package main;
+package main.core;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ParticleSystem {
 
@@ -20,7 +19,7 @@ public class ParticleSystem {
         for (Particle p : particles) {
             p.update();
         }
-        particles.removeIf(p -> p.isDead());
+        particles.removeIf(Particle::isDead);
     }
 
 
